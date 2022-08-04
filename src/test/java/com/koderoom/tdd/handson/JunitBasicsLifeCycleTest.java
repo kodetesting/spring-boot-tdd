@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 @Slf4j
 @DisplayName("JunitBasicsLifeCycle")
-public class JunitBasicsLifeCycle {
+public class JunitBasicsLifeCycleTest {
 
     @BeforeAll
     static void beforeAll(){

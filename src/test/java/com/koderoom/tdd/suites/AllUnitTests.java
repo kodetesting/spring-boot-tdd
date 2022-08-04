@@ -1,16 +1,16 @@
 package com.koderoom.tdd.suites;
 
 
-import com.koderoom.tdd.handson.JunitBasicsHandson;
-import com.koderoom.tdd.handson.JunitBasicsHandsonV1;
-import com.koderoom.tdd.handson.JunitBasicsHandsonV2;
-import com.koderoom.tdd.handson.JunitBasicsLifeCycle;
+import com.koderoom.tdd.handson.JunitBasicsHandsonTest;
+import com.koderoom.tdd.handson.JunitBasicsHandsonV1Test;
+import com.koderoom.tdd.handson.JunitBasicsHandsonV2Test;
+import com.koderoom.tdd.handson.JunitBasicsLifeCycleTest;
 import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
 import org.junit.platform.suite.api.SuiteDisplayName;
 
 @Suite
 @SuiteDisplayName("All Unit Test using Classes")
-@SelectClasses({JunitBasicsHandson.class, JunitBasicsHandsonV1.class, JunitBasicsHandsonV2.class, JunitBasicsLifeCycle.class})
+@SelectClasses({JunitBasicsHandsonTest.class, JunitBasicsHandsonV1Test.class, JunitBasicsHandsonV2Test.class, JunitBasicsLifeCycleTest.class})
 public class AllUnitTests {
 }

@@ -6,11 +6,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.time.Duration;
-
 @Slf4j
 @DisplayName("JunitBasicsHandsonV2")
-public class JunitBasicsHandsonV2 {
+public class JunitBasicsHandsonV2Test {
 
     @Test
     @DisplayName("Assert All")
