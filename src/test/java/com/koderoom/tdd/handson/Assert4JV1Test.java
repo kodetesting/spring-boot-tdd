@@ -96,6 +96,40 @@ public class Assert4JV1Test {
         ;
     }
 
+
+    @Test
+    @DisplayName("AssertJ with list")
+    void test8() {
+        List<String> list = Arrays.asList("delhi", "calcutta", "chennai", "mumbai");
+        Assertions.assertThat(list)
+                .isNotNull()
+                .isNotEmpty()
+                .allSatisfy((item) -> {
+                    Assertions.assertThat(item)
+                                .isNotNull()
+                                .isNotEmpty()
+                                .doesNotContainAnyWhitespaces();
+                })
+                .anySatisfy(item -> {
+                    Assertions.assertThat(item)
+                                .isEqualTo("mumbai");
+                })
+                .allMatch((item) -> item != null)
+                .anyMatch((item) -> item.equalsIgnoreCase("chennai"));
+    }
+
+
+    @Test
+    @DisplayName("AssertJ Object")
+    void test9() {
+        Sample ref1 = new Sample(1, "rohit");
+        Sample ref2 = new Sample(1, "rohit");
+
+        Assertions.assertThat(ref1)
+                    .usingRecursiveComparison()
+                    .isEqualTo(ref2);
+    }
+
 }
 
 @Data
