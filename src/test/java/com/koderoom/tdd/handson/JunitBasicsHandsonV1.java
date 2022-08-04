@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.Duration;
+
 public class JunitBasicsHandsonV1 {
 
     @Test
@@ -34,9 +36,43 @@ public class JunitBasicsHandsonV1 {
     @Test
     @DisplayName("Not Null Assertions")
     void test6() {
-        Assertions.assertNotNull(null);
-        Assertions.assertNotNull(null, "Expected Not null");
-        Assertions.assertNotNull(null, () -> "Expected Not null");
+        Assertions.assertNotNull(5);
+        Assertions.assertNotNull(5, "Expected Not null");
+        Assertions.assertNotNull(5, () -> "Expected Not null");
+    }
+
+
+    @Test
+    @DisplayName("Assert Throws")
+    void test7() {
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            throw new NullPointerException("message");
+        });
+
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            throw new NullPointerException("message");
+        }, "Expected Null Pointer Exception");
+
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            throw new NullPointerException("message");
+        }, () -> "Expected Null Pointer Exception");
+    }
+
+
+    @Test
+    @DisplayName("Assert does not throw")
+    void test8() {
+        Assertions.assertDoesNotThrow(() -> "hello", "Expected will not throw expection");
+        Assertions.assertDoesNotThrow(() -> "hello", () -> "Expected will not throw expection");
+    }
+
+
+    @Test
+    @DisplayName("Timeout Check")
+    void test9() {
+        Assertions.assertTimeout(Duration.ofSeconds(1), () -> System.out.println("code block"));
+        Assertions.assertTimeout(Duration.ofSeconds(1), () -> System.out.println("code block"), "Excepted to complete in 1 sec");
+        Assertions.assertTimeout(Duration.ofSeconds(1), () -> System.out.println("code block"), () -> "Excepted to complete in 1 sec");
     }
 
 
@@ -55,4 +91,5 @@ public class JunitBasicsHandsonV1 {
         Assertions.assertNotEquals(5, 10, "UnExpected 5");
         Assertions.assertNotEquals(5, 10, () -> "Unexpected 5");
     }
+
 }
