@@ -36,7 +36,7 @@ For further reference, please consider the following sections:
 ### Guides
 Integration with CI/CD
 * CI/CD with Github Action
-* Linting with SonarQube
+* Code Quality - Linting with SonarQube
 * CodeCoverage with Jococo
 * Build Image - Docker/RPM
 * Monitoring with - Prometheus/Grafna
