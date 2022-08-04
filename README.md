@@ -25,4 +25,5 @@ Integration with CI/CD
 * Linting with SonarQube
 * CodeCoverage with Jococo
 * Build Image - Docker/RPM
+* Monitoring with - Prometheus/Grafna
 
