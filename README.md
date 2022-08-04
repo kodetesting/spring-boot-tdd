@@ -8,8 +8,15 @@
 * For the Test Suites -> Rule is Test Class must be suffixed with Test. while using SelectPackages
 
 ### TDD Reference Documentation
-For further reference, please consider the following sections:
+First starts with basic handson on the following
+* Junit 5 
+* TestSuite
+* Assert4J
+* Mockito
+* TestNG
+* TestContainer
 
+For further reference, please consider the following sections:
 * Spring Boot Application with
   * SpringBootTest
   * Test with Different Spring Profiles
