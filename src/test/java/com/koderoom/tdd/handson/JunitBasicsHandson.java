@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @Slf4j
-@DisplayName("Junit Handson")
+@DisplayName("JunitBasicsHandson")
 public class JunitBasicsHandson {
 
     @Test

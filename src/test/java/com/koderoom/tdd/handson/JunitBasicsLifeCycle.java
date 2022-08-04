@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 
 @Slf4j
-@DisplayName("Life Cycle Demo")
+@DisplayName("JunitBasicsLifeCycle")
 public class JunitBasicsLifeCycle {
 
     @BeforeAll

@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.time.Duration;
 
 @Slf4j
-@DisplayName("Junit Handson Basics")
+@DisplayName("JunitBasicsHandsonV2")
 public class JunitBasicsHandsonV2 {
 
     @Test
