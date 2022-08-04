@@ -27,3 +27,22 @@ Integration with CI/CD
 * Build Image - Docker/RPM
 * Monitoring with - Prometheus/Grafna
 
+
+## Junit Annotations Summary
+Basic Annotation
+* @DisplayName – defines a custom display name for a test class or a test method
+* @Disable – disables a test class or method (previously @Ignore)
+* @Tag – declares tags for filtering tests
+
+Advance Annotation
+* @Nested – denotes that the annotated class is a nested, non-static test class
+* @ExtendWith – registers custom extensions
+
+Life Cycle Annotation 
+* @BeforeEach – denotes that the annotated method will be executed before each test method (previously @Before)
+* @AfterEach – denotes that the annotated method will be executed after each test method (previously @After)
+* @BeforeAll – denotes that the annotated method will be executed before all test methods in the current class (previously @BeforeClass)
+* @AfterAll – denotes that the annotated method will be executed after all test methods in the current class (previously @AfterClass)
+
+
+
