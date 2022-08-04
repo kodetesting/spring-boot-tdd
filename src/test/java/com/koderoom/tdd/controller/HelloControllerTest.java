@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@WebMvcTest(HelloController.class)
+@WebMvcTest
 public class HelloControllerTest {
 
     @Autowired
@@ -40,6 +40,18 @@ public class HelloControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("Hello")))
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("raj")))
+        ;
+    }
+
+
+    @Test
+    @DisplayName("Post Mapping Testing")
+    void postTest1() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/hello/"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(MockMvcResultMatchers.content().string("Hello Post!"))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("Hello")))
         ;
     }
 }
