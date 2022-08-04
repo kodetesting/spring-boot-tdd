@@ -1,9 +1,11 @@
 package com.koderoom.tdd.controller;
 
+import com.koderoom.tdd.model.Employee;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,5 +26,10 @@ public class HelloController {
     @PostMapping("/")
     public ResponseEntity<?> postHello() {
         return new ResponseEntity<>("Hello Post!" , HttpStatus.CREATED);
+    }
+
+    @PostMapping("/v1")
+    public ResponseEntity<?> postEmployee(@RequestBody  Employee employee) {
+        return new ResponseEntity<>(employee , HttpStatus.CREATED);
     }
 }

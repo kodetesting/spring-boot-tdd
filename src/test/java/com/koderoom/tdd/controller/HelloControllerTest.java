@@ -1,5 +1,7 @@
 package com.koderoom.tdd.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.koderoom.tdd.model.Employee;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
@@ -52,6 +54,46 @@ public class HelloControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andExpect(MockMvcResultMatchers.content().string("Hello Post!"))
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("Hello")))
+        ;
+    }
+
+
+    @Test
+    @DisplayName("Post Mapping with Request Body")
+    void postTest2() throws Exception {
+        Employee employee = new Employee(1, "raj");
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        this.mockMvc.perform(
+                MockMvcRequestBuilders
+                        .post("/hello/")
+                        .content(objectMapper.writeValueAsString(employee))
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isCreated())
+        ;
+    }
+
+    @Test
+    @DisplayName("Post Mapping with Request Body")
+    void postTest3() throws Exception {
+        Employee employee = new Employee(1, "raj");
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .post("/hello/v1")
+                                .content(objectMapper.writeValueAsString(employee))
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON)
+                )
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("raj")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("raj")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.containsString("raj")))
         ;
     }
 }
