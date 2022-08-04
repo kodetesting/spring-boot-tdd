@@ -1,28 +1,30 @@
 package com.koderoom.tdd.handson;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 
+@Slf4j
 @DisplayName("Life Cycle Demo")
 public class JunitBasicsLifeCycle {
 
     @BeforeAll
     static void beforeAll(){
-        System.out.println("Before All");
+        log.info("Before All");
     }
 
     @AfterAll
     static void afterAll() {
-        System.out.println("After all the test case execution");
+        log.info("After all the test case execution");
     }
 
     @BeforeEach
     void setup() {
-        System.out.println("Before Each Test ");
+        log.info("Before Each Test ");
     }
 
     @AfterEach
     void afterEach() {
-        System.out.println("After Each Test");
+        log.info("After Each Test");
     }
 
     @Test
@@ -36,6 +38,4 @@ public class JunitBasicsLifeCycle {
     void test2() {
         Assertions.assertFalse(false);
     }
-
-
 }
