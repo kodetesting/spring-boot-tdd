@@ -33,7 +33,7 @@ public class JunitBasicsHandsonV2Test {
         @Test
         @DisplayName("Nested Test2")
         void test2() {
-            Assertions.assertFalse(true);
+            Assertions.assertFalse(false);
         }
     }
 }

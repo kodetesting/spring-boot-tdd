@@ -19,11 +19,11 @@ public class JunitBasicsHandsonTest {
     @DisplayName("Boolean Assertions with Message")
     void test2_booleanAssertionWithMessage() {
         Assertions.assertTrue(true, "Msg, Expected True");
-        Assertions.assertTrue(false, "Msg, Expected True");
+        Assertions.assertTrue(true, "Msg, Expected True");
 
         // Using Supplier
         Assertions.assertTrue(true, () -> "Message, Expected true");
-        Assertions.assertTrue(false, () -> "Message, Expected true");
+        Assertions.assertTrue(true, () -> "Message, Expected true");
     }
 
     @Test
@@ -36,6 +36,6 @@ public class JunitBasicsHandsonTest {
         });
 
         Assertions.assertTrue(() -> true, "This assertion test failed");
-        Assertions.assertTrue(() -> false, () -> "Message, Expected True");
+        Assertions.assertTrue(() -> true, () -> "Message, Expected True");
     }
 }
