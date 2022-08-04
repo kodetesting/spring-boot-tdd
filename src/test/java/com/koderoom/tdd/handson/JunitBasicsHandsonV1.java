@@ -24,14 +24,26 @@ public class JunitBasicsHandsonV1 {
     }
 
     @Test
-    @DisplayName("Boolean Assertions")
+    @DisplayName("True Assertions")
     void test3() {
         Assertions.assertTrue(true);
         Assertions.assertTrue(true, "Expected True");
         Assertions.assertTrue(true, () -> "Expected true");
+    }
 
+    @Test
+    @DisplayName("False Assertions")
+    void test4() {
         Assertions.assertFalse(false);
         Assertions.assertFalse(false, "Expected false");
         Assertions.assertFalse(false, () -> "Expected false");
+    }
+
+    @Test
+    @DisplayName("Null Assertions")
+    void test5() {
+        Assertions.assertNull(null);
+        Assertions.assertNull(null, "Expected null");
+        Assertions.assertNull(null, () -> "Expected null");
     }
 }
