@@ -8,22 +8,6 @@ import org.junit.jupiter.api.Test;
 public class JunitBasicsHandsonV1 {
 
     @Test
-    @DisplayName("Equals Check")
-    void test1() {
-        Assertions.assertEquals(5, 5);
-        Assertions.assertEquals(5, 5, "Expected 5");
-        Assertions.assertEquals(5, 5, () -> "Expected 5");
-    }
-
-    @Test
-    @DisplayName("Unexpected check")
-    void test2() {
-        Assertions.assertNotEquals(5, 10);
-        Assertions.assertNotEquals(5, 10, "UnExpected 5");
-        Assertions.assertNotEquals(5, 10, () -> "Unexpected 5");
-    }
-
-    @Test
     @DisplayName("True Assertions")
     void test3() {
         Assertions.assertTrue(true);
@@ -45,5 +29,30 @@ public class JunitBasicsHandsonV1 {
         Assertions.assertNull(null);
         Assertions.assertNull(null, "Expected null");
         Assertions.assertNull(null, () -> "Expected null");
+    }
+
+    @Test
+    @DisplayName("Not Null Assertions")
+    void test6() {
+        Assertions.assertNotNull(null);
+        Assertions.assertNotNull(null, "Expected Not null");
+        Assertions.assertNotNull(null, () -> "Expected Not null");
+    }
+
+
+    @Test
+    @DisplayName("Equals Check")
+    void test1() {
+        Assertions.assertEquals(5, 5);
+        Assertions.assertEquals(5, 5, "Expected 5");
+        Assertions.assertEquals(5, 5, () -> "Expected 5");
+    }
+
+    @Test
+    @DisplayName("Unexpected check")
+    void test2() {
+        Assertions.assertNotEquals(5, 10);
+        Assertions.assertNotEquals(5, 10, "UnExpected 5");
+        Assertions.assertNotEquals(5, 10, () -> "Unexpected 5");
     }
 }
