@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-@WebMvcTest
+@WebMvcTest(HelloController.class)
 public class HelloControllerTest {
 
     @Autowired
