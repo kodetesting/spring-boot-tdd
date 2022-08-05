@@ -9,6 +9,6 @@ import org.junit.platform.suite.api.SuiteDisplayName;
 
 @Suite
 @SuiteDisplayName("AllUnitTestsV2")
-@SelectPackages({"com.koderoom.tdd.handson"})
+@SelectPackages({"com.koderoom.tdd.controller"})
 public class AllUnitTestsV2 {
 }
