@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class Employee {
     int id;
     String name;
+    String uid;
 }
