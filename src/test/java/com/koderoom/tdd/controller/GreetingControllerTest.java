@@ -4,21 +4,21 @@ import com.koderoom.tdd.model.Greeting;
 import com.koderoom.tdd.service.GreetingService;
 import lombok.extern.slf4j.Slf4j;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 @WebMvcTest
@@ -28,6 +28,13 @@ class GreetingControllerTest {
 
     @MockBean
     GreetingService greetingService;
+
+    ObjectMapper objectMapper;
+
+    @BeforeEach
+    void init() {
+        objectMapper = new ObjectMapper();
+    }
 
     @Test
     @DisplayName("Testing GET /greeting/")
@@ -70,6 +77,26 @@ class GreetingControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.[0].name", Matchers.is("raj")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.[0].message", Matchers.is("namaste")))
+        ;
+    }
+
+
+
+    @Test
+    @DisplayName("Testing POST /greeting")
+    void testGreetingV4() throws Exception {
+        Greeting greeting = new Greeting(1, "raj", "namaste");
+
+        Mockito.when(greetingService.greetingV4(greeting)).thenReturn(greeting);
+
+        this.mockMvc.perform(MockMvcRequestBuilders
+                            .post("/greeting/")
+                            .content(objectMapper.writeValueAsString(greeting))
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .accept(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("raj")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.message", Matchers.is("namaste")))
         ;
     }
 }
