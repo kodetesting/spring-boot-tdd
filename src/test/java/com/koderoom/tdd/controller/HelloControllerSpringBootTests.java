@@ -59,7 +59,7 @@ public class HelloControllerSpringBootTests {
     @Test
     void test3() {
         String url = baseUrl + "/hello/v1";
-        Employee employee = new Employee(1,"raj");
+        Employee employee = new Employee(1,"raj", "101");
         ResponseEntity responseEntity = this.restTemplate.postForEntity(url, employee, Employee.class);
 
         Assertions.assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.CREATED);

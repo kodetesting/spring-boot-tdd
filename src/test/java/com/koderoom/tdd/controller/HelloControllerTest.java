@@ -44,6 +44,28 @@ public class HelloControllerTest {
 
 
     @Test
+    @DisplayName("Path Param Testing")
+    void getPathparamTest() throws Exception{
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/hello/v2/{id}?name=raj", "101"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("raj")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("101")))
+        ;
+    }
+
+    @Test
+    @DisplayName("Path Param Testing")
+    void getPathparamTest2() throws Exception{
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/hello/v2/{p1}/{p2}?name=raj", "101", "202"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("raj")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("101")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("202")))
+        ;
+    }
+
+
+    @Test
     @DisplayName("Post Mapping Testing")
     void postTest1() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.post("/hello/"))
@@ -58,7 +80,7 @@ public class HelloControllerTest {
     @Test
     @DisplayName("Post Mapping with Request Body")
     void postTest2() throws Exception {
-        Employee employee = new Employee(1, "raj");
+        Employee employee = new Employee(1, "raj", "101");
         ObjectMapper objectMapper = new ObjectMapper();
 
         this.mockMvc.perform(
@@ -72,10 +94,11 @@ public class HelloControllerTest {
         ;
     }
 
+
     @Test
     @DisplayName("Post Mapping with Request Body")
     void postTest3() throws Exception {
-        Employee employee = new Employee(1, "raj");
+        Employee employee = new Employee(1, "raj", null);
         ObjectMapper objectMapper = new ObjectMapper();
 
         this.mockMvc.perform(
@@ -91,6 +114,29 @@ public class HelloControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("raj")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.containsString("raj")))
+        ;
+    }
+
+
+    @Test
+    @DisplayName("Post Mapping with Request Body")
+    void postTestWithPathParam() throws Exception {
+        Employee employee = new Employee(1, "raj", "101");
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        this.mockMvc.perform(
+                        MockMvcRequestBuilders
+                                .post("/hello/v2/{id}", "202")
+                                .content(objectMapper.writeValueAsString(employee))
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON)
+                )
+                .andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("raj")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("raj")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.containsString("raj")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.uid", Matchers.containsString("202")))
         ;
     }
 }
