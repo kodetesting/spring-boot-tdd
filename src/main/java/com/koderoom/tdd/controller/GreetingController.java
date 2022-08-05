@@ -1,5 +1,6 @@
 package com.koderoom.tdd.controller;
 
+import com.koderoom.tdd.model.Greeting;
 import com.koderoom.tdd.service.GreetingService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,11 @@ public class GreetingController {
     public ResponseEntity<?> greetingV1(@RequestParam String name) {
         String message = greetingService.greetingV1(name);
         return new ResponseEntity<>(message, HttpStatus.OK);
+    }
+
+    @GetMapping("/v2")
+    public ResponseEntity<?> greetingV2(@RequestParam String name) {
+        Greeting greeting = greetingService.greetingV2(name);
+        return new ResponseEntity<>(greeting, HttpStatus.OK);
     }
 }
