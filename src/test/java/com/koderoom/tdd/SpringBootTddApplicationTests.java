@@ -21,7 +21,7 @@ class SpringBootTddApplicationTests {
 
 	@Test
 	void contextLoads() {
-		String value = env.getProperty("server.port");
+		String value = env.getProperty("svc.services.vault.keystorePath");
 		log.info("Value {}", value);
 	}
 
