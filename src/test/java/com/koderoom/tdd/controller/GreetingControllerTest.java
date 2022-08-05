@@ -15,6 +15,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
@@ -49,6 +52,24 @@ class GreetingControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("raj")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.message", Matchers.is("namaste")))
+        ;
+    }
+
+
+
+    @Test
+    @DisplayName("Testing GET /greeting/v3")
+    void testGreetingV3() throws Exception {
+        List<Greeting> list = new ArrayList<>();
+        Greeting greeting = new Greeting(1, "raj", "namaste");
+        list.add(greeting);
+
+        Mockito.when(greetingService.greetingV3()).thenReturn(list);
+
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/greeting/v3"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].name", Matchers.is("raj")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].message", Matchers.is("namaste")))
         ;
     }
 }
