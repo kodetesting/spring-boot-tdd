@@ -44,7 +44,7 @@ public class HelloControllerSpringBootTestsUsingMockMvc {
 
     @Test
     void test2() throws Exception{
-        Employee employee = new Employee(1, "raj");
+        Employee employee = new Employee(1, "raj", "101");
         mockMvc.perform(MockMvcRequestBuilders
                     .post("/hello/v1")
                     .content(objectMapper.writeValueAsString(employee))
