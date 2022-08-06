@@ -3,7 +3,10 @@ package com.koderoom.tdd.repository;
 import com.koderoom.tdd.model.Greeting;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -12,6 +15,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 @DataJpaTest
 @AutoConfigureTestDatabase
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class GreetingRepositoryTest {
 
     @Autowired
@@ -21,6 +25,7 @@ class GreetingRepositoryTest {
     GreetingRepository greetingRepository;
 
     @Test
+    @Order(1)
     @DisplayName("Persist Entity")
     void test1() {
         Greeting greeting = Greeting.builder().message("namaste").name("raja").build();
@@ -34,6 +39,7 @@ class GreetingRepositoryTest {
 
 
     @Test
+    @Order(2)
     @DisplayName("Persist Entity using Entity Manager")
     void test2() {
         Greeting greeting = Greeting.builder().message("namaste").name("rohit").build();
@@ -44,6 +50,7 @@ class GreetingRepositoryTest {
 
 
     @Test
+    @Order(3)
     @DisplayName("Find by Id")
     void test3() {
         Greeting greeting = Greeting.builder().message("namaste").name("rohit").build();
@@ -58,6 +65,7 @@ class GreetingRepositoryTest {
 
 
     @Test
+    @Order(4)
     @DisplayName("Find All")
     void test4() {
         Greeting greeting = Greeting.builder().message("namaste").name("rohit").build();
