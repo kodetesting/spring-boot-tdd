@@ -127,7 +127,11 @@ public class Assert4JV1Test {
 
         Assertions.assertThat(ref1)
                     .usingRecursiveComparison()
-                    .isEqualTo(ref2);
+                    .isEqualTo(ref2)
+        ;
+        Assertions.assertThat(ref1).extracting("id").isEqualTo(1);
+
+
     }
 
 }
