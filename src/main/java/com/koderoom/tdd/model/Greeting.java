@@ -1,6 +1,7 @@
 package com.koderoom.tdd.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,9 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Data
+@Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 public class Greeting {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
