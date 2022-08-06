@@ -17,7 +17,7 @@ import org.springframework.test.context.TestPropertySource;
 @DataJpaTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@TestPropertySource(properties = {"spring.datasource.url=jdbc:tc:postgresql:latest://project4"})
+@TestPropertySource(properties = {"spring.datasource.url=jdbc:tc:postgresql:14-alpine://project4"})
 class GreetingRepositoryUsingTestContainerTest {
 
     @Autowired
