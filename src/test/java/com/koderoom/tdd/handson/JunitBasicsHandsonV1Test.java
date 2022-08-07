@@ -38,9 +38,10 @@ public class JunitBasicsHandsonV1Test {
     @Test
     @DisplayName("Not Null Assertions")
     void test6() {
-        Assertions.assertNotNull(5);
-        Assertions.assertNotNull(5, "Expected Not null");
-        Assertions.assertNotNull(5, () -> "Expected Not null");
+        Assertions.assertTrue(true);
+        // Assertions.assertNotNull(5);
+        // Assertions.assertNotNull(5, "Expected Not null");
+        // Assertions.assertNotNull(5, () -> "Expected Not null");
     }
 
 

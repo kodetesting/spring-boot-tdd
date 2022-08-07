@@ -48,7 +48,6 @@ public class Assert4JV1Test {
     @DisplayName("AssertJ with Number")
     void test4() {
         Assertions.assertThat(10)
-                .isNotNull()
                 .isNotZero()
                 .isEven()
                 .isLessThan(100)
