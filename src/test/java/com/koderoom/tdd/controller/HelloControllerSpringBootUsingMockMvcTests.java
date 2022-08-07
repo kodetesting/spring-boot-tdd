@@ -18,7 +18,7 @@ import org.testcontainers.shaded.com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureTestDatabase
-public class HelloControllerSpringBootUsingMockMvcTests {
+class HelloControllerSpringBootUsingMockMvcTests {
 
     @Autowired
     MockMvc mockMvc;

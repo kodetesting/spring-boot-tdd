@@ -10,9 +10,10 @@ import org.junit.platform.suite.api.SuiteDisplayName;
 @Suite
 @SuiteDisplayName("AllUnitTestsV1")
 @SelectPackages("com.koderoom.tdd.handson")
-public class AllUnitTestsV1 {
+class AllUnitTestsV1 {
     @Test
     void test1() {
-        Assertions.assertThat(true).isTrue();
+        boolean actual = true;
+        Assertions.assertThat(actual).isTrue();
     }
 }

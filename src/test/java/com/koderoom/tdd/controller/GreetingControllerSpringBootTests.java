@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 
 @AutoConfigureTestDatabase
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class GreetingControllerSpringBootTests {
+class GreetingControllerSpringBootTests {
 
     @LocalServerPort
     private int port;
@@ -30,7 +30,10 @@ public class GreetingControllerSpringBootTests {
     }
 
     @Test
-    void loadContext(){}
+    void loadContext(){
+        boolean actual = true;
+        Assertions.assertThat(actual).isTrue();
+    }
 
 
     @Test

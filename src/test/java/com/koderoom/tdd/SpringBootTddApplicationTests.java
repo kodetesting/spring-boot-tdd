@@ -11,7 +11,8 @@ class SpringBootTddApplicationTests {
 
 	@Test
 	void contextLoads() {
-		Assertions.assertThat(true).isTrue();
+		boolean actual = true;
+		Assertions.assertThat(actual).isTrue();
 	}
 
 }

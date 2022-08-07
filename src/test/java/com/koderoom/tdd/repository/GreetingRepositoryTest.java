@@ -45,7 +45,7 @@ class GreetingRepositoryTest {
         Greeting greeting = Greeting.builder().message("namaste").name("rohit").build();
         testEntityManager.persist(greeting);
 
-        Assertions.assertThat(greeting.getId()).isGreaterThan(0);
+        Assertions.assertThat(greeting.getId()).isPositive();
     }
 
 

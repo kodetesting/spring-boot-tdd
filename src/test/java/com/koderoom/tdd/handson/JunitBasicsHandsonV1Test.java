@@ -9,7 +9,7 @@ import java.time.Duration;
 
 @Slf4j
 @DisplayName("JunitBasicsHandsonV1")
-public class JunitBasicsHandsonV1Test {
+class JunitBasicsHandsonV1Test {
 
     @Test
     @DisplayName("True Assertions")
@@ -38,9 +38,11 @@ public class JunitBasicsHandsonV1Test {
     @Test
     @DisplayName("Not Null Assertions")
     void test6() {
-        Assertions.assertNotNull(5);
-        Assertions.assertNotNull(5, "Expected Not null");
-        Assertions.assertNotNull(5, () -> "Expected Not null");
+        // Assertions.assertNotNull(5);
+        // Assertions.assertNotNull(5, "Expected Not null");
+        // Assertions.assertNotNull(5, () -> "Expected Not null");
+        boolean actual = true;
+        org.assertj.core.api.Assertions.assertThat(actual).isTrue();
     }
 
 
@@ -81,17 +83,19 @@ public class JunitBasicsHandsonV1Test {
     @Test
     @DisplayName("Equals Check")
     void test1() {
-        Assertions.assertEquals(5, 5);
-        Assertions.assertEquals(5, 5, "Expected 5");
-        Assertions.assertEquals(5, 5, () -> "Expected 5");
+        int actual = 5;
+        Assertions.assertEquals(5, actual);
+        Assertions.assertEquals(5, actual, "Expected 5");
+        Assertions.assertEquals(5, actual, () -> "Expected 5");
     }
 
     @Test
     @DisplayName("Unexpected check")
     void test2() {
-        Assertions.assertNotEquals(5, 10);
-        Assertions.assertNotEquals(5, 10, "UnExpected 5");
-        Assertions.assertNotEquals(5, 10, () -> "Unexpected 5");
+        int actual = 10;
+        Assertions.assertNotEquals(5, actual);
+        Assertions.assertNotEquals(5, actual, "UnExpected 5");
+        Assertions.assertNotEquals(5, actual, () -> "Unexpected 5");
     }
 
 }

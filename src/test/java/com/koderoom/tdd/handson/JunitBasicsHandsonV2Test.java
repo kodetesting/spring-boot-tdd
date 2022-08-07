@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 @Slf4j
 @DisplayName("JunitBasicsHandsonV2")
-public class JunitBasicsHandsonV2Test {
+class JunitBasicsHandsonV2Test {
 
     @Test
     @DisplayName("Assert All")
@@ -16,7 +16,7 @@ public class JunitBasicsHandsonV2Test {
         Assertions.assertAll("Multiple Assertions",
                 () -> Assertions.assertTrue(true),
                 () -> Assertions.assertFalse(false),
-                () -> Assertions.assertEquals(5+2, 7)
+                () -> Assertions.assertEquals(7, 5+2)
         );
     }
 
