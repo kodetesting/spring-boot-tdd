@@ -10,7 +10,7 @@ import org.junit.platform.suite.api.SuiteDisplayName;
 @Suite
 @SuiteDisplayName("AllUnitTestsV1")
 @SelectPackages("com.koderoom.tdd.handson")
-public class AllUnitTestsV1 {
+public class AllUnitV1Tests {
     @Test
     void test1() {
         Assertions.assertThat(true).isTrue();
