@@ -4,10 +4,13 @@ import com.koderoom.tdd.model.User;
 import com.koderoom.tdd.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl {
@@ -23,7 +26,11 @@ public class UserServiceImpl {
     }
 
     public List<User> findByQuery(String entityUid) {
-        return mongoTemplate.findAll(User.class);
+        Query query = new Query();
+        // query.addCriteria(Criteria.where("entityUid").is("e7c8dc87-6455-4a7d-8cb2-941966b41a02"));
+        query.addCriteria(Criteria.where("entityUid").is(UUID.fromString("e7c8dc87-6455-4a7d-8cb2-941966b41a02")));
+
+        return mongoTemplate.find(query, User.class);
     }
 
     public User findUserById(String id) {

@@ -33,6 +33,7 @@ public class UserController {
 
     @GetMapping("/byquery")
     ResponseEntity<?> findByQuery(@RequestParam(required = false) String entityUid) {
+        // List<User> list = userService.findAll(entityUid);
         List<User> list = userService.findByQuery(entityUid);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
