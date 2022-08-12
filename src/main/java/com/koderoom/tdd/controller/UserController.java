@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -22,6 +24,18 @@ public class UserController {
 
     @Autowired
     UserServiceImpl userService;
+
+    @GetMapping("/")
+    ResponseEntity<?> findAll(@RequestParam(required = false) String entityUid) {
+        List<User> list = userService.findAll(entityUid);
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    @GetMapping("/byquery")
+    ResponseEntity<?> findByQuery(@RequestParam(required = false) String entityUid) {
+        List<User> list = userService.findByQuery(entityUid);
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
 
     @GetMapping("/{id}")
     ResponseEntity<?> findUserById(@PathVariable String id) {
