@@ -4,6 +4,7 @@
 * [https://blog.jetbrains.com/idea/2020/09/writing-tests-with-junit-5/](https://blog.jetbrains.com/idea/2020/09/writing-tests-with-junit-5/)
 * [https://www.baeldung.com/junit-5](https://www.baeldung.com/junit-5)
 * [https://spring.io/guides/gs/testing-web/](https://spring.io/guides/gs/testing-web/)
+* [https://www.digitalocean.com/community/tutorials/spring-boot-mongodb](https://www.digitalocean.com/community/tutorials/spring-boot-mongodb)
 
 ### Important Notes
 * For the Test Suites -> Rule is Test Class must be suffixed with Test. while using SelectPackages
@@ -60,4 +61,10 @@ Life Cycle Annotation
 * @AfterAll – denotes that the annotated method will be executed after all test methods in the current class (previously @AfterClass)
 
 
+
+# SPRING DATA MONGO
+```
+let devdb = db.getSiblingDB('dev_db')
+devdb.createUser({user:"dev_user", pwd:"dev_user",roles: ["readWrite","dbAdmin"]});
+```
 
