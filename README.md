@@ -6,6 +6,7 @@
 * [https://spring.io/guides/gs/testing-web/](https://spring.io/guides/gs/testing-web/)
 * [https://www.digitalocean.com/community/tutorials/spring-boot-mongodb](https://www.digitalocean.com/community/tutorials/spring-boot-mongodb)
 * [https://jschmitz.dev/posts/how_to_test_the_data_layer_of_your_spring_boot_application_with_dataMongotest/](https://jschmitz.dev/posts/how_to_test_the_data_layer_of_your_spring_boot_application_with_dataMongotest/)
+* [https://rieckpil.de/mongodb-testcontainers-setup-for-datamongotest/](https://rieckpil.de/mongodb-testcontainers-setup-for-datamongotest/)
 
 
 ### Important Notes
