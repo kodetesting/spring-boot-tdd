@@ -3,21 +3,38 @@ package com.verifone.order.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.verifone.order.model.Employee;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.data.mongo.AutoConfigureDataMongo;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.testcontainers.containers.MongoDBContainer;
+import org.testcontainers.utility.DockerImageName;
 
 @WebMvcTest
+@AutoConfigureDataMongo
 public class HelloControllerTest {
 
+    static final MongoDBContainer mongoDBContainer = new MongoDBContainer(DockerImageName.parse("mongo:latest"));
     @Autowired
     MockMvc mockMvc;
+
+    @BeforeAll
+    static void setup() {
+        mongoDBContainer.start();
+    }
+
+    @AfterAll
+    static void teardown() {
+        mongoDBContainer.close();
+    }
 
     @Test
     @DisplayName("Testing sayHi from Hello Controller")
