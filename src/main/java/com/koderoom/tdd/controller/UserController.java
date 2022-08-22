@@ -25,6 +25,12 @@ public class UserController {
     @Autowired
     UserServiceImpl userService;
 
+    @GetMapping("/hi")
+    public ResponseEntity<?> sayHello() {
+        return new ResponseEntity<>("Hello World!" , HttpStatus.OK);
+    }
+
+
     @GetMapping("/")
     ResponseEntity<?> findAll(@RequestParam(required = false) String entityUid) {
         List<User> list = userService.findAll(entityUid);
