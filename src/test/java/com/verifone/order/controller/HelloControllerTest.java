@@ -18,23 +18,11 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.utility.DockerImageName;
 
-@WebMvcTest
-@AutoConfigureDataMongo
+@WebMvcTest(HelloController.class)
 public class HelloControllerTest {
 
-    static final MongoDBContainer mongoDBContainer = new MongoDBContainer(DockerImageName.parse("mongo:latest"));
     @Autowired
     MockMvc mockMvc;
-
-    @BeforeAll
-    static void setup() {
-        mongoDBContainer.start();
-    }
-
-    @AfterAll
-    static void teardown() {
-        mongoDBContainer.close();
-    }
 
     @Test
     @DisplayName("Testing sayHi from Hello Controller")
