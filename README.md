@@ -27,6 +27,16 @@ For further reference, please consider the following sections:
   * Reactive Test Later
 * Data Layer with
   * DataJpaTest (Sql/NoSql)
+  * Spring Data with Embeded Mongo
+    * create `application.properties` in test/resources folder
+    * Add following property, after that `SpringBootTest` will start working. 
+    ```
+      spring.mongodb.embedded.version=3.6.5
+      mongo.db.name=testdb
+      mongo.db.url=localhost
+      mongo.db.port=12345
+    ```
+    * Adding `@AutoConfigureDataMongo` is optional till this commit. 
 * Service layer with
   * Mockito
 * Kafka Testing
