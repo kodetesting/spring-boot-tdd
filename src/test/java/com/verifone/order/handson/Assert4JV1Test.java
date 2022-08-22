@@ -1,4 +1,4 @@
-package com.koderoom.tdd.handson;
+package com.verifone.order.handson;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.koderoom.tdd;
+package com.verifone.order;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.koderoom.tdd.suites;
+package com.verifone.order.suites;
 
 
 import org.junit.platform.suite.api.ExcludePackages;

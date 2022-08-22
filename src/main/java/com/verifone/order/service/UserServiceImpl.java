@@ -1,7 +1,7 @@
-package com.koderoom.tdd.service;
+package com.verifone.order.service;
 
-import com.koderoom.tdd.model.User;
-import com.koderoom.tdd.repository.UserRepository;
+import com.verifone.order.model.User;
+import com.verifone.order.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;

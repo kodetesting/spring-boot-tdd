@@ -1,7 +1,7 @@
-package com.koderoom.tdd.controller;
+package com.verifone.order.controller;
 
-import com.koderoom.tdd.model.User;
-import com.koderoom.tdd.service.UserServiceImpl;
+import com.verifone.order.model.User;
+import com.verifone.order.service.UserServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

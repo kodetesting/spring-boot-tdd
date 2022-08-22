@@ -1,6 +1,6 @@
-package com.koderoom.tdd.repository;
+package com.verifone.order.repository;
 
-import com.koderoom.tdd.model.User;
+import com.verifone.order.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

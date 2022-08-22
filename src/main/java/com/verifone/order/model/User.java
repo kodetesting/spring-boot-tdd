@@ -1,4 +1,4 @@
-package com.koderoom.tdd.model;
+package com.verifone.order.model;
 
 
 import lombok.AllArgsConstructor;
