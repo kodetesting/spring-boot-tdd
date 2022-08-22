@@ -1,7 +1,5 @@
 package com.koderoom.tdd.controller;
 
-import com.koderoom.tdd.model.Employee;
-import com.koderoom.tdd.model.User;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
