@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/purchase-tid")
@@ -27,31 +29,41 @@ public class PurchaseTidController {
     @GetMapping("/")
     public ResponseEntity<?> queryPurchaseTid() {
         log.info("Query Purchase Tid By {}");
-        return new ResponseEntity<>("Query Purchase Tid" , HttpStatus.OK);
+
+        List<PurchaseTid> list =  purchaseTidService.queryPurchaseTid();
+        return new ResponseEntity<>(list , HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getPurchaseTidById(@PathVariable String id) {
         log.info("GET Purchase Tid By Id {}", id);
-        return new ResponseEntity<>("Get By Id" , HttpStatus.OK);
+
+        PurchaseTid purchaseTid =  purchaseTidService.getPurchaseTidById(id);
+        return new ResponseEntity<>(purchaseTid, HttpStatus.OK);
     }
 
     @PostMapping("/")
     public ResponseEntity<?> createPurchaseTidBy(@RequestBody PurchaseTid purchaseTid) {
         log.info("Create New Purchase Tid {}", purchaseTid);
-        return new ResponseEntity<>("Create Operation!" , HttpStatus.CREATED);
+
+        PurchaseTid purchaseTidRes =  purchaseTidService.createPurchaseTidBy(purchaseTid);
+        return new ResponseEntity<>(purchaseTidRes , HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updatePurchaseTidBy(@PathVariable String id, @RequestBody PurchaseTid purchaseTid) {
         log.info("Update Existing Purchase Tid {}, {}", id, purchaseTid);
-        return new ResponseEntity<>("Update Operation!" , HttpStatus.OK);
+
+        PurchaseTid purchaseTidRes =  purchaseTidService.updatePurchaseTidBy(id, purchaseTid);
+        return new ResponseEntity<>(purchaseTidRes , HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> updatePurchaseTidBy(@PathVariable String id) {
+    public ResponseEntity<?> deletePurchaseTidBy(@PathVariable String id) {
         log.info("Delete Existing Purchase Tid {}, {}", id);
-        return new ResponseEntity<>("Delete Operation!" , HttpStatus.OK);
+
+        purchaseTidService.deletePurchaseTidBy(id);
+        return new ResponseEntity<>(HttpStatus.GONE);
     }
 
 
