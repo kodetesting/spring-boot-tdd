@@ -3,6 +3,7 @@ package com.koderoom.tdd.repository;
 
 import com.koderoom.tdd.model.User;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.AutoConfigureDataMongo;
@@ -21,6 +22,11 @@ class UserRepositoryTest {
 
     @Autowired
     MongoTemplate mongoTemplate;
+
+    @AfterEach
+    void cleanUpDatabase() {
+        mongoTemplate.getDb().drop();
+    }
 
     @Test
     void test1() {
