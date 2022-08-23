@@ -5,7 +5,9 @@ import com.verifone.order.repository.PurchaseTidRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -31,13 +33,22 @@ public class PurchaseTidServiceImpl implements PurchaseTidService {
             throw new RuntimeException("TID Already Exits!!");
         });
 
+        purchaseTid.setCreatedDate(OffsetDateTime.now());
+        purchaseTid.setModifiedDate(OffsetDateTime.now());
+
         PurchaseTid purchaseTid1 =  purchaseTidRepository.save(purchaseTid);
         return purchaseTid1;
     }
 
     @Override
     public PurchaseTid updatePurchaseTidBy(String id, PurchaseTid purchaseTid) {
-        purchaseTidRepository.findById(id).orElseThrow(() -> new RuntimeException("Resource does not exists"));
+        PurchaseTid purchaseTid1 = purchaseTidRepository.findById(id).orElseThrow(() -> new RuntimeException("Resource does not exists"));
+
+        if(Objects.nonNull(purchaseTid.getStatus())) {
+            purchaseTid1.setStatus(purchaseTid.getStatus());
+        }
+
+        purchaseTid1.setModifiedDate(OffsetDateTime.now());
         return  purchaseTidRepository.save(purchaseTid);
     }
 
