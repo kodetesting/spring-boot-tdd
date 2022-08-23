@@ -22,32 +22,28 @@ public class PurchaseTidServiceImpl implements PurchaseTidService {
     @Override
     public PurchaseTid getPurchaseTidById(String id) {
         Optional<PurchaseTid> purchaseTidOptional = purchaseTidRepository.findById(id);
-        purchaseTidOptional.orElseThrow();
-        return purchaseTidOptional.get();
+        return purchaseTidOptional.orElseThrow(() -> new RuntimeException("Resource Not Found"));
     }
 
     @Override
     public PurchaseTid createPurchaseTidBy(PurchaseTid purchaseTid) {
-        Optional<PurchaseTid> purchaseTidOptional =  purchaseTidRepository.findById(purchaseTid.getTid());
+        purchaseTidRepository.findById(purchaseTid.getTid()).ifPresent((purchaseTid1) -> {
+            throw new RuntimeException("TID Already Exits!!");
+        });
 
-        if(purchaseTidOptional.isEmpty()) {
-            PurchaseTid purchaseTid1 =  purchaseTidRepository.save(purchaseTid);
-            return purchaseTid1;
-        } else {
-            throw new RuntimeException("TID Already Exists!");
-        }
-    }
-
-    @Override
-    public PurchaseTid updatePurchaseTidBy(String id, PurchaseTid purchaseTid) {
-        purchaseTid.setTid(id);
-        PurchaseTid purchaseTid1 = purchaseTidRepository.save(purchaseTid);
+        PurchaseTid purchaseTid1 =  purchaseTidRepository.save(purchaseTid);
         return purchaseTid1;
     }
 
     @Override
+    public PurchaseTid updatePurchaseTidBy(String id, PurchaseTid purchaseTid) {
+        purchaseTidRepository.findById(id).orElseThrow(() -> new RuntimeException("Resource does not exists"));
+        return  purchaseTidRepository.save(purchaseTid);
+    }
+
+    @Override
     public void deletePurchaseTidBy(String id) {
+        purchaseTidRepository.findById(id).orElseThrow(() -> new RuntimeException("Resource does not exists"));
         purchaseTidRepository.deleteById(id);
-        return;
     }
 }
