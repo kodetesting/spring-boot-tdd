@@ -81,3 +81,5 @@ let devdb = db.getSiblingDB('dev_db')
 devdb.createUser({user:"dev_user", pwd:"dev_user",roles: ["readWrite","dbAdmin"]});
 ```
 
+# Jacoco
+* https://metamug.com/article/java/code-coverage-with-jococo.html
