@@ -4,10 +4,7 @@
 name: Java CI with Maven
 
 on:
-  push:
-    branches: [ "datajpa-integration-and-test" ]
-  pull_request:
-    branches: [ "datajpa-integration-and-test" ]
+  workflow_dispatch:
 
 jobs:
   build:
